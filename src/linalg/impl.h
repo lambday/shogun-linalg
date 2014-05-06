@@ -7,6 +7,9 @@
  * Written (W) 2014 Soumyajit De
  */
 
+#ifndef IMPL_H_
+#define IMPL_H_
+
 #include <shogun/lib/config.h>
 #include <shogun/lib/SGVector.h>
 #include <shogun/lib/SGMatrix.h>
@@ -75,3 +78,4 @@ struct sum<Scalar, SGMatrix<Scalar>, Backend::Eigen3>
 
 }
 }
+#endif // IMPL_H_
