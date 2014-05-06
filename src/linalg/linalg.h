@@ -26,9 +26,8 @@ enum class Backend
 // general purpose linalg_traits for compile time information
 // about backends
 template <class T>
-struct linalg_traits
+struct linalg_traits : T
 {
-	const static Backend backend = T::backend;
 };
 
 // define the modules
