@@ -24,8 +24,8 @@ linalg
 Facilities
 ============
 Now, we can set backends in compile time via compiler options. It can be used to
- - Set a particular backend (say, Eigen3) for all the linalg modules via -DUSE_EIGEN3 compiler option
- - Set module specific backends (say, LinSolver) via -DUSE_EIGEN3_LINSLV options and so
+ - Set a particular backend (say, Eigen3) for all the linalg modules via `-DUSE_EIGEN3` compiler option
+ - Set module specific backends (say, LinSolver) via `-DUSE_EIGEN3_LINSLV` options and so
  - Some default backends are always set and is left up to API designers
  - For users, they can always use any particular backend they want via especially mentioning the backend, no matther what global backend was set initially.
  - All of these are done in compile time for faster execution
