@@ -33,8 +33,8 @@ Now, we can set backends in compile time via compiler options. It can be used to
 What's inside
 ==============
 A test demo showing working example of dot and sum operation from the redux module (3 tests, two of them are using global settings, another is using explicitly set backend).
-To compile, inside src run
+To compile, run
 ```
-g++ test.cpp -I. -std=c++0x -lshogun -I/usr/include/eigen3
+g++ -O3 -std=c++0x -I./src/ -I/usr/include/eigen3 -lshogun -o test src/test.cpp
 ```
 Use additional `-DUSE_EIGEN3` to set Eigen3 as global backend. Use `-DUSE_EIGEN3_REDUX` to set Eigen3 as default for reduction module linalg operations.
