@@ -7,8 +7,8 @@
  * Written (W) 2014 Soumyajit De
  */
 
-#ifndef IMPL_H_
-#define IMPL_H_
+#ifndef REDUX_IMPL_H_
+#define REDUX_IMPL_H_
 
 #include <shogun/lib/config.h>
 #include <shogun/lib/SGVector.h>
@@ -20,14 +20,13 @@
 
 #include <iostream>
 
+using namespace shogun;
+using namespace std;
+
 namespace linalg
 {
-
 namespace impl
 {
-using namespace shogun;
-using namespace linalg;
-using namespace std;
 
 template <class Scalar, class Vector, enum Backend>
 struct dot
@@ -78,4 +77,4 @@ struct sum<Scalar, SGMatrix<Scalar>, Backend::Eigen3>
 
 }
 }
-#endif // IMPL_H_
+#endif // REDUX_IMPL_H_

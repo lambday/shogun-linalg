@@ -10,7 +10,7 @@
 #ifndef REDUX_H_
 #define REDUX_H_
 
-#include <linalg/impl.h>
+#include <linalg/impl/redux.h>
 
 namespace linalg
 {

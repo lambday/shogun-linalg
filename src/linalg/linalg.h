@@ -84,7 +84,7 @@ SET_MODULE_BACKEND(Eigsolver, Default)
 }
 
 // include all the modules
-#include <linalg/redux.h>
-// #include <linalg/eigsolver.h> .. and so on
+#include <linalg/modules/redux.h>
+// #include <linalg/modules/eigsolver.h> .. and so on
 
 #endif // LINALG_H_
