@@ -74,7 +74,7 @@ void dot_explicit_backend()
 		SGVector<float>::random_vector(a.vector, a.vlen, 0, 1);
 		SGVector<float>::random_vector(b.vector, b.vlen, 0, 1);
 		time->start();
-		linalg::impl::dot<float, SGVector<float>, linalg::Backend::Eigen3>::compute(a, b);
+		linalg::impl::dot<int,SGVector,float,linalg::Backend::Eigen3>::compute(a, b);
 		auto elapsed = time->cur_time_diff();
 		auto delta = elapsed - mean;
 		mean += delta/i;

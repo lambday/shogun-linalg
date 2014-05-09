@@ -28,16 +28,10 @@ namespace linalg
 namespace impl
 {
 
-template <class Scalar, class Vector, enum Backend>
+template <class Info,template <class,Info...> class Vector,class T,enum Backend,Info... I>
 struct dot
 {
-	static Scalar compute(Vector a, Vector b)
-	{
-#ifdef VERBOSE
-		cout << "Generic dot()" << endl;
-#endif
-		return 0;
-	}
+	static T compute(Vector<T,I...> a, Vector<T,I...> b);
 };
 
 template <class Scalar, class Matrix, enum Backend>
@@ -53,18 +47,30 @@ struct sum
 };
 
 #if defined HAVE_EIGEN3 & (USE_EIGEN3_REDUX | USE_EIGEN3)
-template <class Scalar>
-struct dot<Scalar, SGVector<Scalar>, Backend::Eigen3>
+template <> template <class T>
+struct dot<int, SGVector, T, Backend::Eigen3>
 {
-	static Scalar compute(SGVector<Scalar> a, SGVector<Scalar> b)
+	static T compute(SGVector<T> a, SGVector<T> b)
 	{
 #ifdef VERBOSE
-		cout << "Eigen3 cot()" << endl;
+		cout << "Eigen3 dot()" << endl;
 #endif
-		typedef Eigen::Matrix<Scalar, Eigen::Dynamic, 1> VectorXt;
+		typedef Eigen::Matrix<T, Eigen::Dynamic, 1> VectorXt;
 		Eigen::Map<VectorXt> vec_a(a.vector, a.vlen);
 		Eigen::Map<VectorXt> vec_b(b.vector, b.vlen);
 		return vec_a.dot(vec_b);
+	}
+};
+
+template <> template <class T,int... Info>
+struct dot<int,Eigen::Matrix,T,Backend::Eigen3,Info...>
+{
+	static T compute(Eigen::Matrix<T,Info...> a, Eigen::Matrix<T,Info...> b)
+	{
+#ifdef VERBOSE
+		cout << "Direct Eigen3 dot()" << endl;
+#endif
+		return a.dot(b);
 	}
 };
 

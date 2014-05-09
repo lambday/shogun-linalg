@@ -18,8 +18,16 @@ namespace linalg
 template <template <class,int...> class Vector, class T, int... Info>
 T dot(Vector<T,Info...> a, Vector<T,Info...> b)
 {
-	return impl::dot<T, Vector<T,Info...>, linalg_traits<Redux>::backend>::compute(a, b);
+	return impl::dot<int,Vector,T,linalg_traits<Redux>::backend,Info...>::compute(a, b);
 }
+
+#ifdef HAVE_VIENNACL
+template <template <class,unsigned int> class Vector, class T, unsigned int Info>
+T dot(Vector<T,Info> a, Vector<T,Info> b)
+{
+	return impl::dot<unsigned int,Vector,T,linalg_traits<Redux>::backend,Info>::compute(a, b);
+}
+#endif // HAVE_VIENNACL
 
 template <template <class,int...> class Matrix, class T, int... Info>
 T sum(Matrix<T,Info...> m)
