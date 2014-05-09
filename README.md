@@ -37,4 +37,4 @@ To compile, run
 ```
 g++ -O3 -std=c++0x -I./src/ -I/usr/include/eigen3 -D<OPTIONS> -o test src/test.cpp -lshogun 
 ```
-Where OPTIONS are `USE_EIGEN3` (to set Eigen3 as global backend) or `USE_EIGEN3_REDUX` to set Eigen3 as default for reduction module linalg operations.
+Where `OPTIONS` are `USE_EIGEN3` (to set Eigen3 as global backend) or `USE_EIGEN3_REDUX` to set Eigen3 as default for reduction module linalg operations.
