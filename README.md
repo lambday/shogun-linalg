@@ -35,6 +35,6 @@ What's inside
 A test demo showing working example of dot and sum operation from the redux module (3 tests, two of them are using global settings, another is using explicitly set backend).
 To compile, run
 ```
-g++ -O3 -std=c++0x -I./src/ -I/usr/include/eigen3 -lshogun -o test src/test.cpp
+g++ -O3 -std=c++0x -I./src/ -I/usr/include/eigen3 -D<OPTIONS> -o test src/test.cpp -lshogun 
 ```
-Use additional `-DUSE_EIGEN3` to set Eigen3 as global backend. Use `-DUSE_EIGEN3_REDUX` to set Eigen3 as default for reduction module linalg operations.
+Where OPTIONS are `USE_EIGEN3` (to set Eigen3 as global backend) or `USE_EIGEN3_REDUX` to set Eigen3 as default for reduction module linalg operations.
