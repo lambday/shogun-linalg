@@ -15,16 +15,16 @@
 namespace linalg
 {
 
-template <class Scalar, class Vector>
-Scalar dot(Vector a, Vector b)
+template <template <class,int...> class Vector, class T, int... Info>
+T dot(Vector<T,Info...> a, Vector<T,Info...> b)
 {
-	return impl::dot<Scalar, Vector, linalg_traits<Redux>::backend>::compute(a, b);
+	return impl::dot<T, Vector<T,Info...>, linalg_traits<Redux>::backend>::compute(a, b);
 }
 
-template <class Scalar, class Matrix>
-Scalar sum(Matrix m)
+template <template <class,int...> class Matrix, class T, int... Info>
+T sum(Matrix<T,Info...> m)
 {
-	return impl::sum<Scalar, Matrix, linalg_traits<Redux>::backend>::compute(m);
+	return impl::sum<T, Matrix<T,Info...>, linalg_traits<Redux>::backend>::compute(m);
 }
 
 }

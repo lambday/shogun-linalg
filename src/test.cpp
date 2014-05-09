@@ -20,7 +20,7 @@ void dot_test()
 {
 	auto size = 1000000;
 	SGVector<float> a(size), b(size);
-	auto iter = 1;
+	auto iter = 1000;
 	CTime* time = new CTime();
 	double mean = 0, var = 0;
 	for (auto i = 1; i <= iter; ++i)
@@ -28,7 +28,7 @@ void dot_test()
 		SGVector<float>::random_vector(a.vector, a.vlen, 0, 1);
 		SGVector<float>::random_vector(b.vector, b.vlen, 0, 1);
 		time->start();
-		linalg::dot<float, SGVector<float> >(a, b);
+		linalg::dot(a, b);
 		auto elapsed = time->cur_time_diff();
 		auto delta = elapsed - mean;
 		mean += delta/i;
@@ -51,7 +51,7 @@ void sum_test()
 		Map<MatrixXf> mat(m.matrix, m.num_rows, m.num_cols);
 		mat=MatrixXf::Random(size, size);
 		time->start();
-		linalg::sum<float, SGMatrix<float> >(m);
+		linalg::sum(m);
 		auto elapsed = time->cur_time_diff();
 		auto delta = elapsed - mean;
 		mean += delta/i;
@@ -66,7 +66,7 @@ void dot_explicit_backend()
 {
 	auto size = 1000000;
 	SGVector<float> a(size), b(size);
-	auto iter = 1;
+	auto iter = 1000;
 	CTime* time = new CTime();
 	double mean = 0, var = 0;
 	for (auto i = 1; i <= iter; ++i)
@@ -74,7 +74,7 @@ void dot_explicit_backend()
 		SGVector<float>::random_vector(a.vector, a.vlen, 0, 1);
 		SGVector<float>::random_vector(b.vector, b.vlen, 0, 1);
 		time->start();
-		linalg::impl::dot<float, SGVector<float>, linalg::Backend::Default>::compute(a, b);
+		linalg::impl::dot<float, SGVector<float>, linalg::Backend::Eigen3>::compute(a, b);
 		auto elapsed = time->cur_time_diff();
 		auto delta = elapsed - mean;
 		mean += delta/i;

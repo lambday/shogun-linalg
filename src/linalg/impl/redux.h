@@ -33,7 +33,9 @@ struct dot
 {
 	static Scalar compute(Vector a, Vector b)
 	{
+#ifdef VERBOSE
 		cout << "Generic dot()" << endl;
+#endif
 		return 0;
 	}
 };
@@ -43,7 +45,9 @@ struct sum
 {
 	static Scalar compute(Matrix m)
 	{
+#ifdef VERBOSE
 		cout << "Generic sum()" << endl;
+#endif
 		return 0;
 	}
 };
@@ -54,7 +58,9 @@ struct dot<Scalar, SGVector<Scalar>, Backend::Eigen3>
 {
 	static Scalar compute(SGVector<Scalar> a, SGVector<Scalar> b)
 	{
+#ifdef VERBOSE
 		cout << "Eigen3 cot()" << endl;
+#endif
 		typedef Eigen::Matrix<Scalar, Eigen::Dynamic, 1> VectorXt;
 		Eigen::Map<VectorXt> vec_a(a.vector, a.vlen);
 		Eigen::Map<VectorXt> vec_b(b.vector, b.vlen);
@@ -67,7 +73,9 @@ struct sum<Scalar, SGMatrix<Scalar>, Backend::Eigen3>
 {
 	static Scalar compute(SGMatrix<Scalar> m)
 	{
+#ifdef VERBOSE
 		cout << "Eigen3 sum()" << endl;
+#endif
 		typedef Eigen::Matrix<Scalar, Eigen::Dynamic, Eigen::Dynamic> MatrixXt;
 		Eigen::Map<MatrixXt> mat(m.matrix, m.num_rows, m.num_cols);
 		return mat.sum();
